@@ -5,7 +5,7 @@
 from random import *
 
 def main():
-print ("This is will make a random list of number between 1 and 50 and it will see if 27 is in the list and it will then tell you the frequency of 27.")
+print "This is will make a random list of number between 1 and 50 and it will see if 27 is in the list and it will then tell you the frequency of 27."
     count = 0
     nums = []
     for i in range (50):
