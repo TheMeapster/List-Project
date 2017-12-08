@@ -18,7 +18,7 @@ def main():
                 print "That is not a number."
     for i in nums:
         tot = tot + i
-    ave = tot/10.00000000000000000000000000000000000000000
+    ave = tot/10.0
     print "The average is:", ave
 
 main()
