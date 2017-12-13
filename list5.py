@@ -10,6 +10,6 @@ def main():
     for i in string:
         if i in vowels:
             count += 1
-    print "The amount of vowels in the string are", count
+    print "The amount of vowels in the string are:", count
 
 main()
