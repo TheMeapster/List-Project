@@ -17,7 +17,7 @@ def main():
                 print "Please type a valid number"
     for i in nums:
         tot = tot + i
-    ave = tot/10.0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ave = tot/10.0
     print "Average of List: ", ave
 
 main()
