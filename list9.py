@@ -7,8 +7,8 @@ def decrypt(x):
     for i in sorted(convertFlip.iterkeys()):
         convertFinal[i]=convertFlip[i]
     print convertFinal
-    message = raw_input('Enter the encoded message with each number seperated by a comma: ')
-    message = message.split(',')
+    message = raw_input('Enter the encoded message with each number seperated by a space: ')
+    message = message.split(' ')
     key = input('Enter the key: ')
     characters = []
     final = ''
@@ -17,12 +17,12 @@ def decrypt(x):
     for i in characters:
         i = int(i)
         if ASCII.index(i) + key + 1 > len(ASCII):
-            place = ASCII.index(i) - len(ASCII) + key
+            place = ASCII.index(i) + len(ASCII) - key
             i = ASCII[place]
             final += str(convertFlip[i]) + ' '
         else:
-            i = ASCII[ASCII.index(i)+key]
-            final += str(convertFlip[i]) + ' '
+            i = ASCII[ASCII.index(i) - key]
+            final += str(convertFlip[i])
     print final
 def encrypt(x):
     ASCII = [' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?', '@', 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~']
@@ -43,7 +43,7 @@ def encrypt(x):
     print final
 
 def main():
-    convert = {' ': 32, '!': 33, '\"': 34, '#': 35, '$': 36, '%': 37, '&': 38, '\'': 39, '(': 40, ')': 41, '*': 42, '+':43, ',': 44, '-': 45, '.': 46, '/': 47,'0': 48,'1': 49,'2': 50, '3': 51,'4': 52,'5':53,'6':54,'7':55,'8':56,'9':57,':':58,';':59,'<':60,'=':61,'>':62,'?':63,'@':64,'A':65,'B':66,'C':67,'D':68,'E':69,'F':70, 'G':71,'H':72,'I':73,'J':74,'K':75,'L':76,'M':77,'N':78,'O':79,'P':80,'Q':81,'R':82,'S':83,'T':84,'U':85,'V':86,'W':87,'X':88,'Y':89,'Z':90,'[][':91,'\\':92,']]':93,'^':94,'_':95,'`':96,'a':97,'b':98,'c':99,'d':100,'e':101,'f':102,'g':103,'h':104,'i':105,'j':106,'k':107,'l':108,'m':109,'n':110,'o':111,'p':112,'q':113,'r':114,'s':115,'t':116,'u':117,'v':118,'w':119,'x':120,'y':121,'z':122,'{':123,'|':124,'}':125,'~':126}
+    convert = {' ': 32, '!': 33, '\"': 34, '#': 35, '$': 36, '%': 37, '&': 38, '\'': 39, '(': 40, ')': 41, '*': 42, '+':43, ',': 44, '-': 45, '.': 46, '/': 47,'0': 48,'1': 49,'2': 50, '3': 51,'4': 52,'5':53,'6':54,'7':55,'8':56,'9':57,':':58,';':59,'<':60,'=':61,'>':62,'?':63,'@':64,'A':65,'B':66,'C':67,'D':68,'E':69,'F':70, 'G':71,'H':72,'I':73,'J':74,'K':75,'L':76,'M':77,'N':78,'O':79,'P':80,'Q':81,'R':82,'S':83,'T':84,'U':85,'V':86,'W':87,'X':88,'Y':89,'Z':90,'[':91,'\\':92,']':93,'^':94,'_':95,'`':96,'a':97,'b':98,'c':99,'d':100,'e':101,'f':102,'g':103,'h':104,'i':105,'j':106,'k':107,'l':108,'m':109,'n':110,'o':111,'p':112,'q':113,'r':114,'s':115,'t':116,'u':117,'v':118,'w':119,'x':120,'y':121,'z':122,'{':123,'|':124,'}':125,'~':126}
     choice = raw_input("Would you like to encrypt(e) or decrypt(d) a message: ")
     if choice == 'e':
         encrypt(convert)
