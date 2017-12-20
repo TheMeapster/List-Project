@@ -18,7 +18,7 @@ def decrypt(x):
         if ASCII.index(i) + key + 1 > len(ASCII):
             place = ASCII.index(i) - len(ASCII) - key
             i = ASCII[place]
-            final += str(convertFlip[i]) + ' '
+            final += str(convertFlip[i])
         else:
             i = ASCII[ASCII.index(i) - key]
             final += str(convertFlip[i])
