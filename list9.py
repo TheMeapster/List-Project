@@ -6,39 +6,79 @@ def decrypt(x):
     convertFinal={}
     for i in sorted(convertFlip.iterkeys()):
         convertFinal[i]=convertFlip[i]
-    message = raw_input('Enter the encoded message with each number seperated by a space: ')
-    message = message.split(' ')
-    key = input('Enter the key: ')
-    characters = []
+    goodInput = 0
+    while goodInput == 0:
+        goodInput = 1
+        message = raw_input('Enter the encoded message with each number seperated by a space: ')
+        message = message.split(' ')
+        for i in message:
+            mesdig = 0
+            while mesdig == 0:
+                if i.isdigit():
+                    if int(i) <= 126:
+                        mesdig = 1
+                        i = int(i)
+                    else:
+                        print "That is not a valid message."
+                        mesdig = 1
+                        goodInput = 0
+                else:
+                    print "That is not a valid message."
+                    mesdig = 1
+                    goodInput = 0
+    digit = 0
+    while digit == 0:
+        key = raw_input('Enter a key: ')
+        if key.isdigit():
+            key = int(key)
+            digit = 1
+        else:
+            print "That is not a valid key."
     final = ''
     for i in message:
-        characters.append(i)
-    for i in characters:
         i = int(i)
-        if ASCII.index(i) + key + 1 > len(ASCII):
-            place = ASCII.index(i) - len(ASCII) - key
-            i = ASCII[place]
-            final += str(convertFlip[i])
+        while abs(key) > len(ASCII):
+            if key < 0:
+                key = key + len(ASCII)
+            elif key > 0:
+                key = key - len(ASCII)
         else:
-            i = ASCII[ASCII.index(i) - key]
-            final += str(convertFlip[i])
+            if ASCII.index(i) + key + 1 > len(ASCII):
+                place = ASCII.index(i) - len(ASCII) - key
+                i = ASCII[place]
+                final += str(convertFlip[i])
+            else:
+                i = ASCII[ASCII.index(i) - key]
+                final += str(convertFlip[i])
     print final
 def encrypt(x):
     ASCII = [' ', '!', '\"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-', '.', '/','0','1','2','3','4','5','6','7','8','9',':',';','<','=','>','?', '@', 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','[','\\',']','^','_','`','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','{','|','}','~']
     message = raw_input('Enter a message: ')
-    key = input('Enter a key: ')
+    digit = 0
+    while digit == 0:
+        key = raw_input('Enter a key: ')
+        if key.isdigit():
+            digit = 1
+        else:
+            print "That is not a valid key."
     characters = []
     final = ''
     for i in message:
         characters.append(i)
     for i in characters:
-        if ASCII.index(i) + key + 1 > len(ASCII):
-            place = ASCII.index(i) - len(ASCII) + key
-            i = ASCII[place]
-            final += str(x[i]) + ' '
+        while abs(key) > len(ASCII):
+            if key < 0:
+                key = key + len(ASCII)
+            elif key > 0:
+                key = key - len(ASCII)
         else:
-            i = ASCII[ASCII.index(i)+key]
-            final += str(x[i]) + ' '
+            if ASCII.index(i) + key + 1 > len(ASCII):
+                place = ASCII.index(i) - len(ASCII) + key
+                i = ASCII[place]
+                final += str(x[i]) + ' '
+            else:
+                i = ASCII[ASCII.index(i)+key]
+                final += str(x[i]) + ' '
     print final
 
 def main():
