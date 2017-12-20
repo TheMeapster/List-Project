@@ -59,6 +59,7 @@ def encrypt(x):
         key = raw_input('Enter a key: ')
         if key.isdigit():
             digit = 1
+            key = int(key)
         else:
             print "That is not a valid key."
     characters = []
