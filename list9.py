@@ -6,7 +6,6 @@ def decrypt(x):
     convertFinal={}
     for i in sorted(convertFlip.iterkeys()):
         convertFinal[i]=convertFlip[i]
-    print convertFinal
     message = raw_input('Enter the encoded message with each number seperated by a space: ')
     message = message.split(' ')
     key = input('Enter the key: ')
@@ -17,7 +16,7 @@ def decrypt(x):
     for i in characters:
         i = int(i)
         if ASCII.index(i) + key + 1 > len(ASCII):
-            place = ASCII.index(i) + len(ASCII) - key
+            place = ASCII.index(i) - len(ASCII) - key
             i = ASCII[place]
             final += str(convertFlip[i]) + ' '
         else:
