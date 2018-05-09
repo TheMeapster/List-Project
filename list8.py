@@ -20,4 +20,5 @@ def main():
             if x == i:
                 stringAlpha = stringAlpha + x
     print "The numbers sorted alphabetically are:", stringAlpha
+
 main()

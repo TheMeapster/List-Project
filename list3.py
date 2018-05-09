@@ -18,5 +18,4 @@ print "This is will make a random list of number between 1 and 50 and it will se
             print "27 is in the list and it repeats",count,"times"
             print "The list is", nums
 
-
 main()
